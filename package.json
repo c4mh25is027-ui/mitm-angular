@@ -12,5 +12,14 @@
   "type": "commonjs",
   "dependencies": {
     "angular": "^1.8.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c4mh25is027-ui/mitm-angular.git"
+  },
+  "bugs": {
+    "url": "https://github.com/c4mh25is027-ui/mitm-angular/issues"
+  },
+  "homepage": "https://github.com/c4mh25is027-ui/mitm-angular#readme"
 }
