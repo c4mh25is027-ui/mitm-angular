@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+   <!DOCTYPE html>
+<html lang="en" ng-app="myApp">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>my website</title>
+    <meta charset="UTF-8">
+    <title>Student Management</title>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="app.js"></script>
 </head>
-<body>
+
+<body ng-controller ="myCtrl" >
+
+    <h2>product list</h2>
+
+    <input ng-model="searchText" placeholder="Search for products..">
+    <p>today's date is {{ today | date:'fullDate' }}</p>
+
+    <div ng-repeat="p in products | filter:search">
+        {{ p.name }} - {{ p.price | currency:'₹' }}
+    </div>
+
+
 
 </body>
 </html>
