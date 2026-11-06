@@ -1,139 +1,57 @@
-
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
-    <title>College Student Management System</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #eef2f7;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #243b64;
-        }
-
-        .container {
-            background-color: white;
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px gray;
-        }
-
-        h2 {
-            color: #243b64;
-        }
-
-        input {
-            width: 95%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            background-color: #243b64;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-        }
-
-        button:hover {
-            background-color: #4169a1;
-        }
-
-        .student {
-            background-color: #f1f5fb;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .pass {
-            color: green;
-            font-weight: bold;
-        }
-
-        .fail {
-            color: red;
-            font-weight: bold;
-        }
-
-        hr {
-            margin: 25px 0;
-        }
-    </style>
+    <title>Student Registration</title>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="app.js"></script>
 </head>
 
-<body>
+<body ng-controller="myCtrl">
 
-    <h1>College Student Management System</h1>
+    <h2>Student Registration</h2>
 
-    <div class="container">
+    <form name="studentForm" ng-submit="submit()" novalidate>
 
-        <!-- Student Registration -->
-        <h2>Student Registration</h2>
+        <input type="text" ng-model="student.name"
+               name="name" placeholder="Student Name" required>
+        <br><br>
 
-        <input type="text" id="name"
-            placeholder="Enter Student Name">
+        <input type="email" ng-model="student.email"
+               name="email" placeholder="Email" required>
+        <br><br>
 
-        <input type="text" id="roll"
-            placeholder="Enter Roll Number">
+        <select ng-model="student.department" required>
+            <option value="">Select Department</option>
+            <option>CSE</option>
+            <option>ECE</option>
+            <option>EEE</option>
+        </select>
+        <br><br>
 
-        <input type="text" id="department"
-            placeholder="Enter Department">
+        <input type="number" ng-model="student.age"
+               name="age" placeholder="Age" min="18" required>
+        <br><br>
 
-        <input type="text" id="semester"
-            placeholder="Enter Semester">
-
-        <button onclick="addStudent()">
-            Add Student
+        <button type="submit" ng-disabled="studentForm.$invalid">
+            Register
         </button>
 
-        <hr>
+    </form>
 
-        <!-- Student List -->
-        <h2>Student List</h2>
+    <p ng-if="submitted">
+        Registration Successful!
+    </p>
 
-        <div id="studentList">
-            <p>No students added yet.</p>
-        </div>
+    <h3>Student Details</h3>
 
-        <hr>
+    <p>Name: {{ student.name | uppercaseText }}</p>
+    <p>Email: {{ student.email }}</p>
+    <p>Department: {{ student.department }}</p>
+    <p>Age: {{ student.age }}</p>
 
-        <!-- Examination Result -->
-        <h2>Examination Result</h2>
+    <hr>
 
-        <input type="text" id="resultRoll"
-            placeholder="Enter Student Roll Number">
-
-        <input type="number" id="marks"
-            placeholder="Enter Examination Marks (0-100)"
-            min="0" max="100">
-
-        <button onclick="showResult()">
-            Calculate Result
-        </button>
-
-        <div id="result"></div>
-
-    </div>
-
-    <script src="app.js"></script>
+    <p highlight>Custom Directive Example</p>
 
 </body>
 </html>
